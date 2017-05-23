@@ -12,26 +12,7 @@ import java.util.List;
 import com.jx372.mysite.Vo.GuestBookVo;
 
 
-public class GuestBookDao {
-
-	private Connection getConnection() throws SQLException {
-		Connection conn = null;
-		try {
-			// 1. 드라이버 로딩
-			Class.forName("com.mysql.jdbc.Driver");
-
-			// 2.Connection 하기
-			String url = "jdbc:mysql://localhost:3306/webdb?useUnicode=true&characterEncoding=utf8";
-			conn = DriverManager.getConnection(url, "webdb", "webdb");
-			System.out.println("연결 성공!!!");
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-
-			System.out.println("JDBC Driver를 찾을 수 없습니다.");
-		}
-		return conn;
-
-	}
+public class GuestBookDao extends ConnectionDao{
 
 	public boolean insert(GuestBookVo vo) {
 		Connection conn = null;

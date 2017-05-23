@@ -17,9 +17,11 @@
 		<c:import url="/WEB-INF/views/include/header.jsp"></c:import>
 		<div id="content">
 			<div id="board">
-				<form class="board-form" method="post"
+				<form class="board-form" method="get"
 					action="${pageContext.servletContext.contextPath}/board">
 					<input type="hidden" name="a" value="write">
+					<input type="hidden" name="no" value="${no}">
+					<input type="hidden" name="depth" value="${depth}"> 
 					<table class="tbl-ex">
 						<tr>
 							<th colspan="2">글쓰기</th>
@@ -34,7 +36,7 @@
 						</tr>
 					</table>
 					<div class="bottom">
-						<input type="submit" value="등록"> <a
+						<input type="submit" value="댓글 등록"> <a
 							href="${pageContext.servletContext.contextPath}/board">취소</a>
 					</div>
 				</form>

@@ -9,4 +9,41 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <!-- context param 설정(전역 파라미터) -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/applicationContext.xml</param-value>
+	</context-param>
+   <!-- listener 설정 -->
+  <listener>
+  	<listener-class>com.jx372.mysite.listener.ContextLoaderListener</listener-class>
+  </listener>
+
+  <!-- filter 설정 -->
+  <filter>
+    <filter-name>Encoding Filter</filter-name>
+    <filter-class>com.jx372.mysite.Filter.EncodingFilter</filter-class>
+    <init-param>
+      <param-name>encoding</param-name>
+      <param-value>UTF-8</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>Encoding Filter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+<!-- servlet 설정 -->
+	<servlet>
+		<servlet-name>MainServlet</servlet-name>
+		<servlet-class>com.jx372.mysite.controller.MainServlet</servlet-class>
+		<init-param>
+			<param-name>config</param-name>
+			<param-value>/WEB-INF/test.xml</param-value>
+		</init-param>
+	</servlet>  
+	<servlet-mapping>
+		<servlet-name>MainServlet</servlet-name>
+		<url-pattern>/main</url-pattern>
+	</servlet-mapping>
 </web-app>
